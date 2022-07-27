@@ -1,21 +1,56 @@
-const UserManager = require('./UserManager.js')
-const userService = new UserManager()
+//PRUEBA DE IMPORTACION POR FUNCIONES - NO FORMA PARTE DEL DESAFIO
+// const funcionesSaludo = require("./funcion.js");
+// const saludar = funcionesSaludo.saludo1;
+// const saludar2 = funcionesSaludo.saludo2;
+// saludar();
+// saludar2();
 
+const Contenedor = require("./classContenedor.js");
+const fs = require("fs");
 
-let user ={
-    first_name: "Valentin",
-    last_name: "Tixeira",
-    username: "LordSyrs",
-    age:25,
-    mail: ""
+//DEFINO EL CONTENEDOR
+let route = "./productos.txt";
+
+async function checkProducts(route) {
+	try {
+		const data = await fs.promises.readFile(route, "utf-8");
+		products = JSON.parse(data);
+	} catch (err) {
+		await fs.promises.writeFile(route, JSON.stringify([]));
+		products = [];
+	}
 }
 
-//userService.createUser(user).then(result=>console.log(result))
+const product1 = {
+	title: "Escuadra",
+	price: 123.45,
+	thumbnail: "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+};
 
-//userService.findAll().then(result=>console.log(result))
+const product2 = {
+	title: "Calculadora",
+	price: 234.56,
+	thumbnail: "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+};
 
-//userService.findById(2).then(result=>console.log(result))
+const product3 = {
+	title: "Globo Terráqueo",
+	price: 345.67,
+	thumbnail: "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+};
 
-//userService.updateUser(2, user).then(result=>console.log(result))
+const archivo = new Contenedor(route);
 
-//userService.deleteUser(3).then(result=>console.log(result))
+async function main() {
+	await checkProducts(route);
+	await archivo.save(product1);
+	await archivo.save(product2);
+	await archivo.save(product3);
+	// await archivo.getAll();
+	//await archivo.getById(4);
+	await archivo.deleteAll();
+	//await archivo.deleteById(1);
+	console.log("Fin de la ejecucion");
+}
+
+main();
