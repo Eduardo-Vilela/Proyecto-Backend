@@ -1,9 +1,3 @@
-//PRUEBA DE IMPORTACION POR FUNCIONES - NO FORMA PARTE DEL DESAFIO
-// const funcionesSaludo = require("./funcion.js");
-// const saludar = funcionesSaludo.saludo1;
-// const saludar2 = funcionesSaludo.saludo2;
-// saludar();
-// saludar2();
 
 const Contenedor = require("./classContenedor.js");
 const fs = require("fs");
