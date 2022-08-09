@@ -101,6 +101,9 @@ router.put('/:id', (req, res) => {
   }
 });
 
+
+
+
 router.post('/', (req, res) => {
   const { body } = req;
   body.price = parseFloat(body.price);
