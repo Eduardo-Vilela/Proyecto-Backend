@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poryecto Backend - Eduardo Vilela</title>
+</head>
+<body>
+    <div style="width:50%;height:50vh">
+    <h1>cargue un producto</h1>
+    <form action="/api/products" method="post" style="display:flex;flex-direction:column;row-gap: 20px;">
+        <input style="border-radius:20px;height:45px" type="text"  id="title" name="title">
+        <input style="border-radius:20px;height:45px" type="number"  id="price" name="price" >
+        <input style="border-radius:20px;height:45px" type="text" id="thumbnail" name="thumbnail">
+        <button type="submit">Cargar</button>
+    </form>
+</div>
+</body>
+</html>
