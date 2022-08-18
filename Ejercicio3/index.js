@@ -27,8 +27,6 @@ app.get("/productos", (req, res) =>
 });
 
 
-
-
 app.get("/productosRandom", (req, res) => {
 
 	fs.promises.readFile(nuevoJson, "utf-8")

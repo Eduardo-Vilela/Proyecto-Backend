@@ -3,7 +3,7 @@ const Contenedor = require("./classContenedor.js");
 const fs = require("fs");
 
 //DEFINO EL CONTENEDOR
-let route = "./productos.txt";
+let route = "./country.json";
 
 async function checkProducts(route) {
 	try {
@@ -40,10 +40,10 @@ async function main() {
 	await archivo.save(product1);
 	await archivo.save(product2);
 	await archivo.save(product3);
-	// await archivo.getAll();
-	//await archivo.getById(4);
+	await archivo.getAll();
+	await archivo.getById(4);
 	await archivo.deleteAll();
-	//await archivo.deleteById(1);
+	await archivo.deleteById(1);
 	console.log("Fin de la ejecucion");
 }
 
