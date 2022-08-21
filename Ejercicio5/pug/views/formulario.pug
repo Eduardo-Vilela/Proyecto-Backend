@@ -1,0 +1,13 @@
+html
+    head
+        title='Formulario en Pug'
+        style
+            include styles.css
+    body
+           h1=title 
+            div(class="contenedor")
+                form(action="/products", method="post" class="flex-product")
+                    input(type="text",name="title" value="Title")
+                    input(type="text",name="price" value="price")
+                    input(type="file",name="imgProduct" value="cargar foto")
+                    input(type="submit" value="Cargar Producto")
