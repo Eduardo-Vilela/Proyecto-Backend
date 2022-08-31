@@ -36,6 +36,7 @@ h1 {
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   width: 40%;
+  height: 80vh;
   border-radius: 20px;
  }
  .flex-form{
@@ -53,11 +54,23 @@ h1 {
     padding: 20px 0px;
  }
  .contenedor-table{
-  width: 90%;
+  width: 70%;
   margin: auto;
+  height: 40vh;
+  overflow: auto;
  }
  .button-sumar{
   background-color: #28A745;
+  line-height: 1.4em;
+  width: 30%;
+  height: 30px;
+  border-radius: 10px;
+  color: white;
+  border: 0;
+ }
+
+ .button-chat{
+  background-color: cornflowerblue;
   line-height: 1.4em;
   width: 30%;
   height: 30px;
@@ -78,9 +91,21 @@ h1 {
  .input-email{
   color: blue;
   font-weight: 800;
+  border-radius: 10px;
+  height: 45px;
  }
 
  .contenedor-mensajes{
   width: 80%;
   margin: auto;
+  background-color: white;
+  height: 400px;
+  border-radius: 10px;
+  overflow-y: auto;
+ }
+ .box-msj{
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
  }

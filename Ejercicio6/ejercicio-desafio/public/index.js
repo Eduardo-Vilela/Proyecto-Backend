@@ -40,14 +40,14 @@ socket.on('products', (data) =>{
    let htmlReduce = data.reduce((previewHtml, CurrentHtml) => previewHtml + `
    <table class="default">
    <tr>
-    <th>TITLE</th>
-    <th>PRICE</th>
-    <th>THUMBNAIL</th>
+    <th style="text-align:center;">TITLE</th>
+    <th style="text-align:center;">PRICE</th>
+    <th style="text-align:center;">THUMBNAIL</th>
    </tr>
     <tr>
-        <td>${CurrentHtml.title}</td>
-        <td>${CurrentHtml.price} </td>
-        <td><img  src="${CurrentHtml.thumbnail}" width:"100"/> </td>
+        <td style="text-align:center;">${CurrentHtml.title}</td>
+        <td style="text-align:center;">${CurrentHtml.price} </td>
+        <td style="text-align:center;"><img  src="${CurrentHtml.thumbnail}" width:"100"/> </td>
     </tr>
    </table>
    
@@ -62,16 +62,13 @@ document.querySelector('#products').innerHTML = htmlReduce;
 
 socket.on('chat', (data) =>{
     let htmlReduce = data.reduce((previewHtml, CurrentHtml) => previewHtml + `
-    <table>
-        <tr style="display: flex;flex-direction: row;justify-content: center;column-gap: 20px;">
-        <td><b style="color: blue;">${CurrentHtml.email}</b></td>
-        <br/>
-        <td><p style="color: brown;margin: 0;"">${CurrentHtml.date}</p></td>
-        <br/>
-        <td><p style="color: green;font-style: italic;margin: 0;"">${CurrentHtml.message}</p></td>
-        </tr>
-    </table>
-    
+
+        <li style="display: flex;column-gap: 20px;">
+        <p><b style="color: blue;">${CurrentHtml.email}</b> - </p>
+        <p style="color: brown;margin: 0;"">[${CurrentHtml.date}]: </p>
+        <p style="color: green;font-style: italic;margin: 0;">${CurrentHtml.message}</p>
+        </li>
+
     `,''
     
     )
@@ -83,7 +80,7 @@ function addMessage(addMessage){
     let messageToAdd= {
         email: addMessage.email.value,
         message: addMessage.message.value,
-        date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleString(),
     }
     socket.emit('newMessage',messageToAdd)
 }
