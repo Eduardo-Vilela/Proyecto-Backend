@@ -81,19 +81,4 @@ carrito.delete('/:id/productos/:id_prod', (req,res) => {
 
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = carrito
