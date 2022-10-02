@@ -6,7 +6,7 @@ const productsRouter = Router()
 
 //const productsStorage = storage().products
 
-productsRouter.get('', (req, res) => {
+productsRouter.get('/allProducts', (req, res) => {
   return productsStorage.findAll()
     .then(products => {
       console.log(products)
@@ -16,8 +16,18 @@ productsRouter.get('', (req, res) => {
   
 })
 
+productsRouter.get('/findProduct', (req, res) => {
+  const data = req.body
+  return productsStorage.find(data)
+    .then(products => {
+      console.log(products)
 
-productsRouter.post('', (req, res) => {
+      return res.json(products)
+    })
+  
+})
+
+productsRouter.post('/crearProducto', (req, res) => {
   const data = req.body
   
   return productsStorage.create(data)
@@ -25,11 +35,9 @@ productsRouter.post('', (req, res) => {
       console.log(newProduct)
       return res.status(201).json(newProduct)
     })
-
-  
 })
 
-productsRouter.put('', (req, res) => {
+productsRouter.put('/updateProducto', (req, res) => {
   const data = req.body
 
   return productsStorage.update(data)
@@ -39,7 +47,7 @@ productsRouter.put('', (req, res) => {
   })
 })
 
-productsRouter.delete('', (req, res) => {
+productsRouter.delete('/deleteProducto', (req, res) => {
   const data = req.body
 
   return productsStorage.delete(data)

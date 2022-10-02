@@ -1,8 +1,10 @@
+const carrito = require('../models/carrito')
 
 class ContenedorMongoDB {
     constructor (mongodb, productos) {
         this.mongodb = require('../mongodb')
         this.productsModel = require('../models/productos')
+        this.carritoModel = require('../models/carrito')
     }
   
     findAll() {
@@ -12,9 +14,9 @@ class ContenedorMongoDB {
         .catch(err => console.error(`Error: ${err.message}`))
     }
   
-    find(id) {
+    find(name) {
         return this.mongodb
-        .then(_ => this.productsModel.findOne({ _id: (id) }))
+        .then(_ => this.productsModel.findOne({ name: (name) }))
         .then(producto => console.log(producto))
         .catch(err => console.error(`Error: ${err.message}`))
     }
@@ -25,27 +27,35 @@ class ContenedorMongoDB {
         .then(_ => product.save())
         .then(document => console.log('Product saved', document))
         .catch(err => console.error(`Error: ${err.message}`))
+    }
 
+    createCarrito(data){
+      const carrito = new this.carritoModel(data)
+      return this.mongodb
+      .then(_ => carrito.save())
+      .then(document => console.log('Carrito saved', document))
+      .catch(err => console.error(`Error: ${err.message}`))
     }
   
-    update(name, price) {
+    update(data) {
         return this.mongodb
         .then(_ => {
-            return this.productsModel.updateOne({
-              name: (name)
+            return this.productsModel.
+            updateMany({
+              name: (data.name)
             }, {
-              $set: { price: (price) }
+              $set: { name: (data.nameNew), price: (data.price), description: (data.description) }
             })
           })
           .then(result => console.log(result))
           .catch(err => console.error(`Error: ${err.message}`))
     }
   
-    delete(name) {
+    delete(data) {
         return this.mongodb
         .then(_ => {
             return this.productsModel.deleteOne({
-              name: (name)
+              name: (data.name)
             })
           })
           .then(result => console.log(result))

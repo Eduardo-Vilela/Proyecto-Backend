@@ -1,36 +1,34 @@
-const { Router } = require('express')
+const { Router, json } = require('express')
 const carritoRouter = Router()
 const { carrito: carritoStorage } = require('../daos')()
 const { products: productsStorage } = require('../daos')()
 
-carritoRouter.get('', (req, res) => {
-    return carritoStorage.findAll(productsStorage)
+carritoRouter.get('/allProductosCarrito', (req, res) => {
+    const nombreCarrito = req.body
+    return carritoStorage.find()
     .then(carrito => {
         console.log(carrito)
         return res.json(carrito)
     })
 })
 
-carritoRouter.post('', (req, res) => {
-    const newProduct = req.body
+carritoRouter.post('/crearCarrito', (req, res) => {
     
-    return carritoStorage.create(newProduct)
-    .then(newCarrito =>{
-        console.log(newCarrito)
-        return res.status(201).json(newCarrito)
+    const productosName = req.body;
+    let arrayNamesProductos = Array();
+    productosName.forEach(element => {
+        let productoBuscado = productsStorage.find(element);
+        arrayNamesProductos.push(productoBuscado);
     })
-})
-
-carritoRouter.put('', (req, res) => {
-    const data = req.body
-    return carritoStorage.update(data)
+    data = JSON.parse(arrayNamesProductos);
+    carritoStorage.createCarrito(data)
     .then(carrito => {
         console.log(carrito)
-        return res.status(201).json(carrito)
+        return res.status(204).json(carrito)
     })
 })
 
-carritoRouter.delete('', (req, res) => {
+carritoRouter.delete('/deleteCarrito', (req, res) => {
     const data = req.body
 
     return carritoStorage.delete(data)

@@ -7,7 +7,7 @@ const ProductosDAOFirebase = require('./productos/productsDAOFirebase')
 const CarritoDAOMongoDB = require('./carrito/carritoDAOMongoDB')
 
 const getStorage = () => {
-  const storage = process.env.STORAGE || 'archivo'
+  const storage = process.env.STORAGE || 'mongodb'
   switch (storage) {
     case 'archivo':
       return {

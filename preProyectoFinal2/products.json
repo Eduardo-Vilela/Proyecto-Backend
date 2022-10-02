@@ -3,5 +3,24 @@
     "name": "Agua natural",
     "price": 10.22,
     "description": "Botella de 1 litro"
+  },
+  {
+    "name": "Wiskie",
+    "price": 23000,
+    "description": "Wiskie Jhonnie Walker"
+  },
+  {
+    "name": "Pepas de membrillo",
+    "price": 500,
+    "description": "pepas caras"
+  },
+  {
+    "name": "Pepas de membrillo",
+    "precio": 500,
+    "description": "pepas caras"
+  },
+  {
+    "name": "Pepas Fantoche",
+    "price": 800
   }
 ]
