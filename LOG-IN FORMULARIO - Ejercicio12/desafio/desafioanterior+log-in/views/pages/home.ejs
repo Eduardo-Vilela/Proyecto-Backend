@@ -14,12 +14,20 @@
   </head>
 
   <body class="d-flex flex-column min-vh-100">
-    <header><%- include('../partials/navbar')%></header>
+    <header>
+      <!-- <% data="name" %> -->
+      <%- include('../partials/navbar')%>
+        <!-- <% if(name) { %>
+        <%- include('../partials/navbar', {name: name}); %>
+          <% } %> -->
+  
+  
+    </header>
     <div class="container d-flex flex-column w-50 my-2">
       <h1 class="text-center text-uppercase"> BIENVENIDO <%=name%> </h1>
-
+      <a id="logout" class="btn btn-danger d-none" href="/logout"> Logout </a>
       <h2 class="text-center">CENTRO DE MENSAJES</h2>
-      <h3 id="div-compres" class ="text-center"></h3>
+      <!-- <h3 id="div-compres" class ="text-center"></h3> -->
       <input
         type="email"
         id="email"
@@ -47,27 +55,6 @@
         class="form-control w-100"
         value=""
         placeholder="Edad"
-      />
-      <input
-        type="text"
-        id="alias"
-        class="form-control w-100"
-        value=""
-        placeholder="Alias"
-      />
-      <input
-        type="text"
-        id="avatar"
-        class="form-control w-100"
-        value="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/2_avatar-256.png"
-        placeholder="Avatar"
-      />
-      <input
-        type="text"
-        id="caja-msg"
-        class="form-control w-100"
-        value=""
-        placeholder="Escriba su mensaje"
       />
       <div class="d-flex flex-row no-wrap w-100">
         <!-- <button class="btn btn-success w-100 mx-1" type="submit" onclick="enviarChat()"> -->

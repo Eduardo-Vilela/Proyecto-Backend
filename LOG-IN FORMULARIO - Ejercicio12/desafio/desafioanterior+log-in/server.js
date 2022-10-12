@@ -30,17 +30,18 @@ import { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
 app.use(express.static(__dirname + "/public"));
-//app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+
 // app.use("/api/products-test", productosApiRouter);
 
-app.use("/api/products-test", productRouter);
-app.use("/login", loginRouter);
-app.use("/home", homeRouter);
 
 //Configuracion de Session
 app.use(
@@ -73,6 +74,7 @@ app.get("/", (req, res) => {
 app.use("/api/products-test", productRouter);
 app.use("/login", loginRouter);
 app.use("/home", homeRouter);
+
 
 app.get("/logout", (req, res) => {
   let username = req.session.username;
