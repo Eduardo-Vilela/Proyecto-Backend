@@ -1,11 +1,9 @@
-import mongoose from "mongoose";
-import Messages from "../models/messageSchema.js";
 
 class MessagesController {
   constructor() {
     try {
       mongoose.connect(
-        "mongodb+srv://eduCasa:EduPcCasa@cluster0.dmft7u9.mongodb.net/test"
+        "mongodb+srv://eduCasa:Edu123@cluster0.dmft7u9.mongodb.net/test"
       ),
         { useNewUrlParser: true };
     } catch (e) {
