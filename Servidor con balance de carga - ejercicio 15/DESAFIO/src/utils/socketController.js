@@ -1,14 +1,16 @@
-import MessagesController from "../../controller/messagesController.js";
-import { normalizeMessages } from "../normalizr/normalizeMessages.js";
+//const MessagesController = require("../../controller/messagesController")
+const MessagesController = require("../../controller/messagesController");
+//import { normalizeMessages } from "../normalizr/normalizeMessages.js";
+const { normalizeMessages } = require("../normalizr/normalizeMessages");
 
 const messagesController = new MessagesController();
 
-export const socketController = (io) => {
+const socketController = (io) => {
   io.on("connection", async (socket) => {
-    console.log("Nuevo Cliente Conectado: " + socket.id);
+    //console.log("Nuevo Cliente Conectado: " + socket.id);
     io.sockets.emit(
       "messages",
-      normalizeMessages(await messagesController.getAll())
+      normalizeMessages(await messagesController.getAll({ sort: true }))
     );
     //queda escuchando el siguiente socket, socket es el usuario/cliente
     socket.on("new-message", async (msjClient) => {
@@ -20,3 +22,4 @@ export const socketController = (io) => {
     });
   });
 };
+module.exports = { socketController };

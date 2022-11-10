@@ -1,11 +1,22 @@
-import homeRouter from "./homeRouter.js";
-import loginRouter from "./loginRouter.js";
-import signupRouter from "./signupRouter.js";
-import productRouter from "./productRouter.js";
-import apiRandomsRouter from "./apiRandomsRouter.js";
-import logoutRouter from "./logoutRouter.js";
+//import homeRouter from "./homeRouter.js";
+const homeRouter = require("./homeRouter");
+//import loginRouter from "./loginRouter.js";
+const loginRouter = require("./loginRouter");
+//import signupRouter from "./signupRouter.js";
+const signupRouter = require("./signupRouter");
+//import productRouter from "./productRouter.js";
+const productRouter = require("./productRouter");
+//import apiRandomsRouter from "./apiRandomsRouter.js";
+const apiRandomsRouter = require("./apiRandomsRouter");
+//import logoutRouter from "./logoutRouter.js";
+// const logoutRouter = require("./logoutRouter");
 
-import parseArgs from "minimist";
+//import parseArgs from "minimist";
+const parseArgs = require("minimist");
+
+// import cluster from "cluster";
+//import os from "os";
+const os = require("os");
 
 const infoRouter = (req, res) => {
   try {
@@ -18,6 +29,7 @@ const infoRouter = (req, res) => {
       rutaEjecutable: process.execPath,
       sistemaOperativo: process.platform,
       memoria: JSON.stringify(process.memoryUsage().rss, null, 2),
+      processNum: os.cpus().length,
     };
     res.render("pages/info", info);
   } catch (error) {
@@ -25,12 +37,12 @@ const infoRouter = (req, res) => {
   }
 };
 
-export {
+module.exports = {
   homeRouter,
   productRouter,
   loginRouter,
   signupRouter,
   apiRandomsRouter,
-  logoutRouter,
+  // logoutRouter,
   infoRouter,
 };

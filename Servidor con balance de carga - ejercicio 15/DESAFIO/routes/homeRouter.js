@@ -1,4 +1,6 @@
-import { Router } from "express";
+//import { Router } from "express";
+
+const { Router } = require("express");
 const homeRouter = Router();
 
 homeRouter.get("/", (req, res, next) => {
@@ -11,4 +13,5 @@ homeRouter.get("/", (req, res, next) => {
   }
 });
 
-export default homeRouter;
+//export default homeRouter;
+module.exports = homeRouter;

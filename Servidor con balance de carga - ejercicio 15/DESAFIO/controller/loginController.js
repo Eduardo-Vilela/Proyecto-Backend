@@ -1,9 +1,10 @@
-export const loginController = {
+const loginController = {
   get: (req, res) => {
     try {
       if (req.isAuthenticated()) {
         res.redirect("/home");
       } else {
+        console.log("first");
         res.render("pages/login");
       }
     } catch (error) {
@@ -30,3 +31,5 @@ export const loginController = {
     }
   },
 };
+
+module.exports = { loginController };

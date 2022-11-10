@@ -19,8 +19,16 @@ const mongoose = require("mongoose");
 const { socketController } = require("./src/utils/socketController");
 
 
-import { homeRouter, productRouter, loginRouter } from "./routes/index.js";
-
+// import { homeRouter, productRouter, loginRouter } from "./routes/index.js";
+const {
+  homeRouter,
+  productRouter,
+  loginRouter,
+  signupRouter,
+  apiRandomsRouter,
+  logoutRouter,
+  infoRouter,
+} = require("./routes/index");
 //////////////////////// VARIABLES DE ENTORNO
 
 const { PORT, MONGOPSW, MODO } = require("./config");
@@ -36,7 +44,7 @@ const redis = require("redis");
 const connectRedis = require("connect-redis");
 
 //import Usuarios from "./models/usuarioSchema.js";
-const Usuarios = require("./models/usuarioSchema");
+const Usuarios = require("./models/usuarioShema");
 //import { isValidPassword, createHash } from "./src/utils/passwordsFunctions.js";
 const {
   isValidPassword,
@@ -50,9 +58,12 @@ const app = express();
 // const __dirname = dirname(__filename);
 
 //////////////////////// CONEXION BASE DE DATOS
+
+
 mongoose
 .connect(
   `mongodb+srv://eduCasa:${MONGOPSW}@cluster0.zqkvn9v.mongodb.net/?retryWrites=true&w=majority`,
+  // 'mongodb+srv://eduCasa:EduPcCasa@cluster0.dmft7u9.mongodb.net/test"'
   { useNewUrlParser: true }
 )
   .then(() => {
@@ -180,7 +191,7 @@ app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
 app.use("/home", homeRouter);
 app.use(apiRandomsRouter);
-app.use("/logout", logoutRouter);
+// app.use("/logout", logoutRouter);
 app.use("/info", infoRouter);
 ////////////////////////
 

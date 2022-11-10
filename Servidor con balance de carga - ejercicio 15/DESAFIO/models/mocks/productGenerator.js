@@ -1,6 +1,7 @@
-import { faker } from "@faker-js/faker";
+//import { faker } from "@faker-js/faker";
+const { faker } = require("@faker-js/faker");
 
-export default function createNFakeProducts(n = 5) {
+function createNFakeProducts(n = 5) {
   let products = [];
   for (let i = 0; i < n; i++) {
     products.push({
@@ -12,3 +13,4 @@ export default function createNFakeProducts(n = 5) {
   }
   return products;
 }
+module.exports = createNFakeProducts;

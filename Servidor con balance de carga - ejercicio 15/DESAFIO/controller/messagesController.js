@@ -1,3 +1,7 @@
+//import mongoose from "mongoose";
+const mongoose = require("mongoose");
+//import Messages from "../models/messageSchema.js";
+const Messages = require("../models/messageSchema");
 
 class MessagesController {
   constructor() {
@@ -38,4 +42,5 @@ class MessagesController {
   }
 }
 
-export default MessagesController;
+// export default MessagesController;
+module.exports = MessagesController;

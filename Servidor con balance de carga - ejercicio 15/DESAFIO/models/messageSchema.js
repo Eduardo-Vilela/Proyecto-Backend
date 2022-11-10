@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+//import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const MessageSchema = new mongoose.Schema(
   {
@@ -19,4 +20,6 @@ const MessageSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Messages", MessageSchema);
+//export default mongoose.model("Messages", MessageSchema);
+module.exports = mongoose.model("Messages", MessageSchema);
+

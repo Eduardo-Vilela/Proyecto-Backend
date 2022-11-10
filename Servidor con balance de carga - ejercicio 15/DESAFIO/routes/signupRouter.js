@@ -1,7 +1,10 @@
-import { Router } from "express";
+//import { Router } from "express";
+const { Router } = require("express");
 const signupRouter = Router();
-import { signupController } from "../controller/signupController.js";
-import passport from "passport";
+//import { signupController } from "../controller/signupController.js";
+const { signupController } = require("../controller/signupController");
+//import passport from "passport";
+const passport = require("passport");
 
 signupRouter.get("/", signupController.get);
 signupRouter.get("/failsignup", signupController.errorSignup);
@@ -12,4 +15,5 @@ signupRouter.post(
   signupController.postsignup
 );
 
-export default signupRouter;
+//export default signupRouter;
+module.exports = signupRouter;

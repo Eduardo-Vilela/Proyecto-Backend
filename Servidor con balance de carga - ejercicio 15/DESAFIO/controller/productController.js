@@ -1,6 +1,7 @@
-import { createNFakeProducts } from "../models/mocks/index.js";
+//import { createNFakeProducts } from "../models/mocks/index.js";
+const { createNFakeProducts } = require("../models/mocks/index");
 
-export const productController = {
+const productController = {
   getData: async (req, res) => {
     try {
       let products = await createNFakeProducts(5);
@@ -20,3 +21,4 @@ export const productController = {
     }
   },
 };
+module.exports = { productController };

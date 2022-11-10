@@ -1,10 +1,17 @@
-import { fork } from "child_process";
-export const apiRandomController = {
+//import { fork } from "child_process";defined
+const { fork } = require("child_process");
+const parseArgs = require("minimist");
+const apiRandomController = {
   get: (req, res) => {
     try {
-      res.status(200).render("pages/random");
+      const args = parseArgs(process.argv.slice(2));
+      // console.log(args.PORT);
+
+      res.status(200).render("pages/random", {
+        port: args !== undefined ? args.PORT : "",
+      });
     } catch (error) {
-      res.status(500).send({ error });
+      res.status(500).send(error.message);
     }
   },
   post: (req, res) => {
@@ -20,3 +27,4 @@ export const apiRandomController = {
     }
   },
 };
+module.exports = { apiRandomController };
