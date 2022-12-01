@@ -1,0 +1,49 @@
+.imagen-superior img{
+    width: 100%;
+}
+
+.ubicacion-container {
+    padding-left: 26px;
+    padding-right: 26px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center
+}
+
+.map-info-titulo hr{
+    opacity: 1;
+    margin-left: auto;  
+    margin-right: auto;
+    margin-top: 50px;
+    width: 80px;
+    color: #F2ECD3;
+}
+
+.map-info-titulo h5{
+    margin:20px 0px ;
+    font-family: Maharlika;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.flex-info{
+    display: flex;
+}
+
+.flex-info{
+    color: #fff;
+    
+}
+
+.col-izq-info{
+    width: 30%;
+}
+.col-der-info{
+    width: 70%;
+}
+.mapa{
+    margin-top: 50px;
+}

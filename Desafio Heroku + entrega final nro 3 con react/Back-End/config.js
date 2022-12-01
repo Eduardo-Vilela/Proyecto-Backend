@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 // import Yargs from "yargs";
 // console.log(Yargs(process.argv.slice(2)).argv);
 
-dotenv.config();
+dotenv.config({ path: 'ENV_FILENAME' });
 
 const args = parseArgs(process.argv.slice(2));
 

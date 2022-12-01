@@ -5,8 +5,9 @@ const { errorLogger } = require("../src/utils/loggers");
 class MessagesController {
   constructor() {
     try {
-      mongoose.connect(
-        "mongodb+srv://eduCasa:EduPcCasa@cluster0.dmft7u9.mongodb.net/?retryWrites=true&w=majority"
+      mongoose.createConnection(
+        // "mongodb+srv://eduCasa:EduPcCasa@cluster0.dmft7u9.mongodb.net/?retryWrites=true&w=majority"
+        "mongodb+srv://eduCasa:EduPcCasa@cluster0.dmft7u9.mongodb.net/test",
       ),
         { useNewUrlParser: true };
     } catch (error) {

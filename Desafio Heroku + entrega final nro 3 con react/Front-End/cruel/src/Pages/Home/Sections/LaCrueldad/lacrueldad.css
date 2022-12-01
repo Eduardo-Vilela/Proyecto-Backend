@@ -1,0 +1,52 @@
+.seccion-titulo-tragos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0px;
+    text-align: center;
+}
+
+.seccion-titulo-tragos img{
+    width: 80px;
+}
+
+.seccion-titulo-tragos h3{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 250px;
+    font-family: Maharlika;
+    color: #FFFFFF;
+}
+
+.seccion-lacrueldad-descripcion{
+    padding: 20px 0px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.lacrueldad-descripcion h5{
+    font-family: Maharlika;
+    color: #F2ECD3;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.lacrueldad-descripcion p{
+    padding-right: 15px;
+    font-family: Poppins;
+    color: #FFFFFF;
+    font-size: 10px;
+}
+
+.linea-descripcion{
+    color: #F2ECD3;
+    opacity: 1;
+    width: 45%;
+    margin-left: 0px;
+}
+
+.seccion-lacrueldad-descripcion img{
+    padding-left: 2px;
+    padding-right: 2px;
+}

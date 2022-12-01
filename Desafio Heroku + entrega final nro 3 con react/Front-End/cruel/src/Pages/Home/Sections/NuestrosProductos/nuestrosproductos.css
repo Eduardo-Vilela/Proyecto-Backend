@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fff;
+  --black: #333;
+  --active-color: #2e3b4e;
+ 
+}
+body {
+	-webkit-font-smoothing: antialiased;
+  background: var(--active-color);
+  transition: background 1.5s ease;
+}
+.tabs-component {
+  max-width: 800px;
+  margin: auto;
+  background: #181818;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tab-links {
+  padding: 0;
+  margin: 0 auto 20px;
+  list-style: none;
+  max-width: 200px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.container{
+  padding: 0px;
+}
+
+.tab {
+  position: relative;
+}
+
+.tab a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.tab::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  position: absolute;
+  border-radius: var(--border-radius);
+  background: none;
+  transition: background 0.5s ease;
+}
+
+.tab svg {
+  height: 30px;
+  width: 18px;
+  min-width: 18px;
+  fill: var(--black);
+  transition: fill 0.5s ease;
+}
+
+/*.tab.active::before {
+  background: var(--active-color);
+}*/
+
+.tab span {
+  font-weight: 700;
+  margin-left: 10px;
+  transition: color 0.5s ease;
+}
+
+.tab.active span {
+  color: white;
+  font-family: Maharlika;
+  font-weight: 100;
+}
+
+.tab.active svg {
+  fill: var(--active-color);
+}
+
+.tab a {
+   padding: 16px 0px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab.active {
+
+  border-bottom: 1px solid #F2ECD3;
+}
+
+.cards{
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.info{
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color:#F2ECD3;
+  font-family: Maharlika;
+  font-weight: 100;
+}
+.content-card{
+  margin-bottom: 2%;
+  width: 48%;
+  position: relative;
+}
+
+.content-card img{
+  width:100%;
+}

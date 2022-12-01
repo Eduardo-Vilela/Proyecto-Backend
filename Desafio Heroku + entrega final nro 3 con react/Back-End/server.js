@@ -208,8 +208,8 @@ app.use((req, res, next) => {
 //////////////////////// RUTAS
 app.get("/home", (req, res) => {
   res.json({
-    nombre: "fran",
-    apellido: "lagorio",
+    nombre: "Eduardo",
+    apellido: "Vilela",
   });
   res.end();
 });

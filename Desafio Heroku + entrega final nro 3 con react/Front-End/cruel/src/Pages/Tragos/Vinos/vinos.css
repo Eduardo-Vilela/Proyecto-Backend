@@ -1,0 +1,39 @@
+.menu-info-vinos{
+    display: flex;
+    flex-direction: column;
+    margin-top: -110px;  
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.vinos-titulo h5{
+   
+    font-family: Maharlika;
+    color: #F2ECD3;
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
+.vino-botella, .vino-copa {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.vino-descripcion{
+    font-family: poppins;
+    color: #F2ECD3;
+    font-size: 16px;
+    font-weight: 100;    
+    margin-bottom: 0px;
+    
+}
+
+.vino-precio{
+    font-family: Maharlika;
+    color: #F2ECD3;
+    font-size: 18px;
+    font-weight: 400;    
+    margin-bottom: 0px;
+}
