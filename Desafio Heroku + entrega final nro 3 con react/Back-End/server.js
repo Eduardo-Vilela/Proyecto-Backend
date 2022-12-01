@@ -1,25 +1,14 @@
-
-
-
-//import { fileURLToPath } from "url";
-const { fileURLToPath } = require("url");
-//import { dirname } from "path";
-const { dirname } = require("path");
-//import http from "http";
 const http = require("http");
-//import express from "express";
 const express = require("express");
-//import session from "express-session";
+const compression = require("compression");
 const session = require("express-session");
-//import { Server } from "socket.io";
 const { Server } = require("socket.io");
-//import mongoose from "mongoose";
 const mongoose = require("mongoose");
-//import { socketController } from "./src/utils/socketController.js";
 const { socketController } = require("./src/utils/socketController");
+const bodyParser = require("body-parser");
+const MongoStore = require("connect-mongo");
+const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
-
-// import { homeRouter, productRouter, loginRouter } from "./routes/index.js";
 const {
   homeRouter,
   productRouter,
@@ -29,43 +18,43 @@ const {
   logoutRouter,
   infoRouter,
 } = require("./routes/index");
+
 //////////////////////// VARIABLES DE ENTORNO
 
 const { PORT, MONGOPSW, MODO } = require("./config");
 
 //////////////////////// Login
-//import passport from "passport";
 const passport = require("passport");
-//import { Strategy as LocalStrategy } from "passport-local";
 const { Strategy: LocalStrategy } = require("passport-local");
-//import redis from "redis";
 const redis = require("redis");
-//import connectRedis from "connect-redis";
 const connectRedis = require("connect-redis");
 
-//import Usuarios from "./models/usuarioSchema.js";
-const Usuarios = require("./models/usuarioShema");
-//import { isValidPassword, createHash } from "./src/utils/passwordsFunctions.js";
+const Usuarios = require("./models/usuarioSchema");
 const {
   isValidPassword,
   createHash,
 } = require("./src/utils/passwordsFunctions");
 ////////////////////////
 
+const { logger } = require("./src/utils/loggers");
+
 ////////////////////////
+
 const app = express();
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
 
+const cors = require("cors");
+
+app.use(cors({ origin: "http://localhost:5173" }));
+
+app.use(compression());
+
+app.use(express.static("public"));
 //////////////////////// CONEXION BASE DE DATOS
-
-
 mongoose
-.connect(
-  // `mongodb+srv://eduCasa:${MONGOPSW}@cluster0.zqkvn9v.mongodb.net/?retryWrites=true&w=majority`,
-  `mongodb+srv://eduCasa:${MONGOPSW}@cluster0.dmft7u9.mongodb.net/test`,
-  {useNewUrlParser: true, useUnifiedTopology: true}
-)
+  .connect(
+    `mongodb+srv://eduCasa:${MONGOPSW}@cluster0.dmft7u9.mongodb.net/test`,
+    { useNewUrlParser: true }
+  )
   .then(() => {
     console.log("Connected to Mongo Atlas");
   })
@@ -141,21 +130,51 @@ passport.deserializeUser((id, done) => {
 });
 
 //////////////////////// CONFIGURACION REDIS
-const client = redis.createClient({ legacyMode: true });
-client.connect();
-const RedisStore = connectRedis(session);
+// const client = redis.createClient({ legacyMode: true });
+// client.connect();
+// const RedisStore = connectRedis(session);
 
+// const client = redis.createClient({
+//   socket: {
+//     host: "redis-16626.c61.us-east-1-3.ec2.cloud.redislabs.com",
+//     port: 16626,
+//   },
+//   password: "cqnTZMkIG5IGuajaeromMFXPU8tezr69",
+//   legacyMode: true,
+// });
+// client.connect();
+// const RedisStore = connectRedis(session);
+
+// app.use(
+//   session({
+//     store: new RedisStore({
+//       host: "redis-16626.c61.us-east-1-3.ec2.cloud.redislabs.com",
+//       port: 16626,
+//       client,
+//       ttl: 300,
+//     }),
+//     secret: "keyboard cat",
+//     cookie: {
+//       httpOnly: false,
+//       secure: false,
+//       maxAge: 86400000, // 1 dia
+//     },
+//     rolling: true,
+//     resave: true,
+//     saveUninitialized: false,
+//   })
+// );
 app.use(
   session({
-    store: new RedisStore({ host: "localhost", port: 6379, client, ttl: 300 }),
-    secret: "keyboard cat",
-    cookie: {
-      httpOnly: false,
-      secure: false,
-      maxAge: 86400000, // 1 dia
-    },
-    rolling: true,
-    resave: true,
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb+srv://franchas123:fran123@cluster0.zqkvn9v.mongodb.net/?retryWrites=true&w=majority",
+      mongoOptions: advancedOptions,
+    }),
+    secret: "secreto",
+    cookie: { maxAge: 600000 },
+    //resave viene de la documentacion
+    resave: false,
     saveUninitialized: false,
   })
 );
@@ -168,8 +187,8 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 
 //////////////////////// LECTURA FORMATO JSON
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //////////////////////// MIDDLEWARE PASSPORT
 app.use(passport.initialize());
@@ -181,18 +200,30 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  logger.info({ URL: req.originalUrl, method: req.method });
+  next();
+});
+
 //////////////////////// RUTAS
-app.get("/", (req, res) => {
-  res.redirect("/login");
+app.get("/home", (req, res) => {
+  res.json({
+    nombre: "fran",
+    apellido: "lagorio",
+  });
+  res.end();
 });
 
 app.use("/api/products-test", productRouter);
-app.use("/login", loginRouter);
+app.use(loginRouter);
 app.use("/signup", signupRouter);
 app.use("/home", homeRouter);
 app.use(apiRandomsRouter);
-// app.use("/logout", logoutRouter);
-app.use("/info", infoRouter);
+app.use("/logout", logoutRouter);
+app.use(
+  infoRouter
+  // infoRouter({ memoryUsageBeforeCompression: memoryUsageBeforeCompression })
+);
 ////////////////////////
 
 //////////////////////// SERVIDOR FORK FOREVER
@@ -218,17 +249,22 @@ if (MODO === "CLUSTER") {
     httpServer.listen(PORT, () => {
       console.log(`inicie un Worker nuevo ${process.pid}`);
     });
+
     ////////////////////// SOCKET
+
     const io = new Server(httpServer, {});
     socketController(io);
+
     /////////////////////
   }
 } else {
   const httpServer = http.createServer(app);
+
   //////////////////////// SOCKET
   const io = new Server(httpServer, {});
   socketController(io);
   ///////////////////////
+
   httpServer.listen(PORT, () => {
     console.log("Servidor Funcionando en Puerto: " + PORT);
     console.log("MODO FORK");
@@ -236,18 +272,8 @@ if (MODO === "CLUSTER") {
   httpServer.on("error", (error) => console.log(`Error en servidor ${error}`));
 }
 
-//////////////PM2
-
-// const httpServer = http.createServer(app);
-// httpServer.listen(PORT, () => {
-//   console.log(PORT);
-//   console.log("Servidor Funcionando en Puerto: " + PORT);
-// });
-// httpServer.on("error", (error) => console.log(`Error en servidor ${error}`));
-// const io = new Server(httpServer, {});
-// socketController(io);
-
 //////////////////////// MANEJO DE ERROR DE REQUEST
 app.all("*", (req, res) => {
+  logger.warn({ URL: req.originalUrl, method: req.method });
   res.status(404).send("Ruta no encontrada");
 });
