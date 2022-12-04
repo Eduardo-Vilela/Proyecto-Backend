@@ -79,7 +79,7 @@ export default function NavbarMenu() {
               <Link to="/"><div className="logo-text">
                 <img
                   alt="Logo Cruel"
-                  src={Logoreact}
+                  src='https://res.cloudinary.com/thiale-indumentaria/image/upload/v1670172315/Thiale_free-file_1_afs8mh.png'
                 />
               </div></Link>
       </div>

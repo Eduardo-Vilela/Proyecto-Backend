@@ -7,7 +7,7 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "Francisco Lagorio",
+  "author": "Eduardo Vilela",
   "license": "ISC",
   "dependencies": {
     "@socket.io/redis-adapter": "^7.2.0",

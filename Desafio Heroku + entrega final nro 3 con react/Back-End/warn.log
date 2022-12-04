@@ -47,3 +47,8 @@
 {"level":"warn","message":{"URL":"/login","method":"GET"}}
 {"level":"warn","message":{"URL":"/login","method":"GET"}}
 {"level":"warn","message":{"URL":"/login","method":"GET"}}
+{"level":"warn","message":{"URL":"/","method":"GET"}}
+{"level":"warn","message":{"URL":"/favicon.ico","method":"GET"}}
+{"level":"warn","message":{"URL":"/","method":"GET"}}
+{"level":"warn","message":{"URL":"/","method":"GET"}}
+{"level":"warn","message":{"URL":"/","method":"GET"}}

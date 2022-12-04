@@ -53,6 +53,7 @@ app.use(express.static("public"));
 mongoose
   .connect(
     `mongodb+srv://eduCasa:${MONGOPSW}@cluster0.dmft7u9.mongodb.net/test`,
+    // `mongodb+srv://eduCasa:${MONGOPSW}cluster0.dmft7u9.mongodb.net/?retryWrites=true&w=majority`,
     { useNewUrlParser: true }
   )
   .then(() => {

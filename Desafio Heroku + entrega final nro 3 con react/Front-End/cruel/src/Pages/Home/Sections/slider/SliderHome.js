@@ -19,13 +19,13 @@ export default function SliderHome() {
           <SwiperSlide>
               <div className="slider-container">                
                     <p className="texto-primer-slider">2X1 EN TÓNICOS DE MARTES A JUEVES</p>            
-                    <img src="https://res.cloudinary.com/grupo-delsud/image/upload/v1652212257/Cruel/2x1_ananib.png"/>
+                    <img src="https://res.cloudinary.com/thiale-indumentaria/image/upload/v1670173987/jeans-definitivo-ss23_suwssk.jpg"/>
               </div>
           </SwiperSlide>
           <SwiperSlide>
               <div className="slider-container">
                     <p className="texto-segundo-slider">LOS MENÚ DEL DÍA ESTÁN EN CRUEL</p>         
-                    <img src="https://res.cloudinary.com/grupo-delsud/image/upload/v1652212256/Cruel/MenuCruel_sratgs.png"/>
+                    <img src="https://res.cloudinary.com/thiale-indumentaria/image/upload/v1670173987/vestidos-definitivo-ss23_us4r87.jpg"/>
               </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -35,7 +35,7 @@ export default function SliderHome() {
                       <p className="mazbe-titulo">MAZBE</p>
                       <p className="mazbe-text">TECH HOUSE | MINIMAL | PROGRESSIVE</p> 
                     </div>                        
-                    <img src="https://res.cloudinary.com/grupo-delsud/image/upload/v1652212255/Cruel/Dj_fodlnh.png"/>
+                    <img src="https://res.cloudinary.com/thiale-indumentaria/image/upload/v1670173987/lenceria-definitivo-ss23_lenzuw.jpg"/>
               </div>
           </SwiperSlide>
         </Swiper>
