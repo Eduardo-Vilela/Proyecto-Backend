@@ -7,7 +7,7 @@ const { REDIS_HOST, REDIS_PSW } = require("./config");
 const client = redis.createClient({
   socket: {
     host: REDIS_HOST,
-    port: 16626,
+    port: 16802,
   },
   password: REDIS_PSW,
   legacyMode: true,
@@ -22,7 +22,7 @@ const redisSession = (app) => {
     session({
       store: new RedisStore({
         host: REDIS_HOST,
-        port: 16626,
+        port: 16802,
         client,
         ttl: 300,
       }),
