@@ -1,7 +1,7 @@
 import apiInstance from './api'
 
 export const apiCrearUsuario = (params) => {
-    return apiInstance.post('/api/user/update', params)
+    return apiInstance.post('/api/login', params)
     .then(res =>{
             return res.data;
     })

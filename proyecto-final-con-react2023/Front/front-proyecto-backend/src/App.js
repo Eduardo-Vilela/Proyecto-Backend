@@ -15,7 +15,7 @@ function App() {
   sagasMiddleware.run(rootSaga)
 
   return (
-    <Provider store={store}>y
+    <Provider store={store}>
       <div className="App">
         <Rutas />
       </div>
