@@ -127,3 +127,17 @@
 {"level":"warn","message":{"URL":"/favicon.ico","method":"GET"}}
 {"level":"warn","message":{"URL":"/favicon.ico","method":"GET"}}
 {"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"warn","message":{"URL":"/favicon.ico","method":"GET"}}
+{"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"error","message":"Error in SingnUp: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms"}
+{"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"error","message":"Error in SingnUp: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms"}
+{"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"error","message":"Error in SingnUp: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms"}
+{"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"error","message":"Error in SingnUp: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms"}
+{"level":"error","message":{"code":8000,"codeName":"AtlasError","ok":0}}
+{"level":"error","message":"Error in SingnUp: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms"}

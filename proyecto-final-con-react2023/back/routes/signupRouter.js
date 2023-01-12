@@ -11,7 +11,9 @@ signupRouter.get("/failsignup", signupController.errorSignup);
 signupRouter.post(
   "/",
   upLoad,
-  passport.authenticate("signup", { failureRedirect: "/signup/failsignup" }),
+  passport.authenticate("signup", 
+  { failureRedirect: "/signup/failsignup" }
+  ),
   signupController.postsignup
 );
 

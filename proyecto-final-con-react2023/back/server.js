@@ -1,5 +1,6 @@
 const express = require("express");
-
+const cors = require('cors');
+// const { createServer} = require("http");
 const { sessionMiddleware } = require("./middlewares/sessionMiddleware");
 const { viewEngineMiddleware } = require("./middlewares/viewEngineMiddleware");
 
@@ -8,7 +9,7 @@ const { connectMongoDB } = require("./daos/connectMongo");
 const Router = require("./routes/Router");
 
 const app = express();
-
+app.use(cors())
 connectMongoDB();
 viewEngineMiddleware(app, express);
 sessionMiddleware(app);

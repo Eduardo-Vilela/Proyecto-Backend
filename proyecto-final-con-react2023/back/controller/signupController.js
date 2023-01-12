@@ -20,6 +20,7 @@ const signupController = {
   },
   postsignup: async (req, res) => {
     try {
+      // console.log(req.datosUsuario)
       req.session.username = req.user;
       await sendEmail(req.user);
       res.redirect("/home");
